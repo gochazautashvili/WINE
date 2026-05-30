@@ -267,7 +267,7 @@ const T = {
         'her.b.p': 'The deep, teinturier Saperavi grape gives Georgia its great reds — from dry Saperavi to the celebrated semisweet Kindzmarauli.',
         'her.c.t': 'The Kvevri',
         'her.c.p': 'Fermented and aged in clay vessels — a UNESCO-recognised method thousands of years old.',
-        'her.d.t': 'Oak &amp; time',
+        'her.d.t': 'Oak & time',
         'her.d.p': 'Brandies rest for years in oak casks, drawing out colour, warmth and a long harmonic trail.',
         'her.e.t': 'For the world',
         'her.e.p': 'Bottled in Georgia and carried abroad — heritage made for the tables of the world.',
@@ -666,16 +666,9 @@ function setHTML(id, html) {
 }
 
 function init() {
-    // brand marks & decorative icons
+    // brand marks (hero/about/heritage scenes are real photos in the markup)
     setHTML('logoMark', logoSVG());
     setHTML('logoMarkFoot', logoSVG());
-    setHTML('heroLandscape', landscapeSVG());
-    setHTML('aboutLandscape', landscapeSVG());
-    setHTML('herLandscape', landscapeSVG());
-    setHTML('herGrapes', grapesSVG());
-    setHTML('herKvevri', kvevriSVG());
-    setHTML('herBarrel', barrelSVG());
-    setHTML('herBottle', bottleIconSVG());
     setHTML('stIc1', IC.wine);
     setHTML('stIc2', IC.brandy);
     setHTML('stIc3', IC.pin);

@@ -393,13 +393,13 @@ body.menu-open .mobile-menu {
     overflow: hidden
 }
 
-.hero .landscape {
+.hero-bg {
     position: absolute;
-    right: -6%;
-    bottom: 0;
-    width: min(62%, 820px);
-    opacity: .5;
-    color: var(--graphite);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
     z-index: 0;
     pointer-events: none
 }
@@ -408,7 +408,7 @@ body.menu-open .mobile-menu {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(120% 80% at 18% 30%, rgba(246, 241, 232, .2), var(--ivory) 62%);
+    background: linear-gradient(98deg, var(--ivory) 28%, rgba(246, 241, 232, .86) 46%, rgba(246, 241, 232, .5) 64%, rgba(246, 241, 232, .2) 100%);
     z-index: 1;
     pointer-events: none
 }
@@ -583,8 +583,15 @@ body.menu-open .mobile-menu {
     inset: 0;
     width: 100%;
     height: 100%;
-    color: rgba(246, 241, 232, .6);
     object-fit: cover
+}
+
+.about-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(0deg, rgba(20, 24, 20, .68), transparent 48%)
 }
 
 .about-visual .frame {
@@ -953,21 +960,26 @@ body.menu-open .mobile-menu {
     min-height: 200px
 }
 
-.hblock .landscape {
+.hblock .hbg {
     position: absolute;
     inset: 0;
     width: 100%;
-    height: 100%
+    height: 100%;
+    object-fit: cover;
+    z-index: 0
 }
 
 .hblock .ov {
     position: absolute;
-    inset: 0
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(0deg, rgba(18, 14, 10, .82), rgba(18, 14, 10, .28) 55%, rgba(18, 14, 10, .45))
 }
 
 .hblock h3 {
     position: relative;
     z-index: 2;
+    color: var(--ivory);
     font-size: 1.7rem;
     font-weight: 400
 }
@@ -976,6 +988,7 @@ body.menu-open .mobile-menu {
     position: relative;
     z-index: 2;
     margin-top: 10px;
+    color: rgba(246, 241, 232, .85);
     font-size: .92rem;
     line-height: 1.6
 }
@@ -987,16 +1000,7 @@ body.menu-open .mobile-menu {
     color: var(--ivory)
 }
 
-.h-a .landscape {
-    color: rgba(246, 241, 232, .5)
-}
-
-.h-a .ov {
-    background: linear-gradient(0deg, rgba(20, 28, 20, .7), transparent 60%)
-}
-
 .h-a p {
-    color: rgba(246, 241, 232, .78);
     max-width: 42ch
 }
 
@@ -1007,29 +1011,9 @@ body.menu-open .mobile-menu {
     min-height: 340px
 }
 
-.h-b p {
-    color: rgba(246, 241, 232, .82)
-}
-
-.h-b .deco {
-    position: absolute;
-    right: -30px;
-    top: -30px;
-    width: 200px;
-    color: rgba(246, 241, 232, .16)
-}
-
 .h-c {
     grid-column: span 4;
     background: var(--sand)
-}
-
-.h-c .deco {
-    position: absolute;
-    right: 18px;
-    top: 18px;
-    width: 90px;
-    color: rgba(94, 26, 40, .4)
 }
 
 .h-d {
@@ -1037,30 +1021,10 @@ body.menu-open .mobile-menu {
     background: var(--clay)
 }
 
-.h-d .deco {
-    position: absolute;
-    right: 18px;
-    top: 18px;
-    width: 90px;
-    color: rgba(33, 28, 22, .45)
-}
-
 .h-e {
     grid-column: span 4;
     background: var(--graphite);
     color: var(--ivory)
-}
-
-.h-e .deco {
-    position: absolute;
-    right: 18px;
-    top: 18px;
-    width: 90px;
-    color: rgba(201, 146, 90, .55)
-}
-
-.h-c p, .h-d p {
-    color: var(--graphite-soft)
 }
 
 /* ===================== STATS ===================== */
