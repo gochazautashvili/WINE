@@ -740,7 +740,7 @@ body.menu-open .mobile-menu {
 /* ===================== PRODUCT GRID ===================== */
 .grid {
     display: grid;
-    grid-template-columns:repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 290px), 1fr));
     gap: clamp(20px, 2.6vw, 40px)
 }
 
@@ -1496,6 +1496,151 @@ body.menu-open .mobile-menu {
     .foot-top {
         grid-template-columns:1fr;
         gap: 34px
+    }
+
+    /* let CTA buttons grow to full width so they never get clipped */
+    .cin-cta, .hero .meta-row {
+        gap: 14px
+    }
+
+    .cin-cta .btn, .hero .meta-row .btn {
+        flex: 1 1 100%;
+        justify-content: center
+    }
+
+    .brandy .lines .ln {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px
+    }
+
+    /* scale the three "stage" bottles so all of them fit on screen, side by
+       side, instead of bleeding off the edges. JS writes an inline height, so
+       these need !important to win. */
+    .brandy-stage {
+        min-height: 360px;
+        gap: 10px
+    }
+
+    .brandy-stage .b1 {
+        height: 280px !important
+    }
+
+    .brandy-stage .b2, .brandy-stage .b3 {
+        height: 220px !important
+    }
+}
+
+/* ---- compact phones (≤400px): tighten the chrome so nothing overflows ---- */
+@media (max-width: 400px) {
+    .wrap {
+        padding: 0 16px
+    }
+
+    .nav-inner {
+        gap: 12px
+    }
+
+    .nav-right {
+        gap: 12px
+    }
+
+    /* drop the "COMPANY" sub-label to reclaim horizontal space in the nav */
+    .brand .name small {
+        display: none
+    }
+
+    .brand .name {
+        font-size: .92rem;
+        letter-spacing: .14em
+    }
+
+    .brand .mark {
+        width: 28px;
+        height: 34px
+    }
+
+    .lang button {
+        padding: 6px 10px
+    }
+
+    .burger {
+        width: 38px;
+        height: 38px
+    }
+
+    /* section rhythm */
+    .section-pad {
+        padding: clamp(56px, 16vw, 80px) 0
+    }
+
+    /* product card breathing room */
+    .card .body {
+        padding: 22px 20px 24px
+    }
+
+    .card .bottle-stage {
+        height: 260px
+    }
+
+    .card .bottle {
+        height: 220px
+    }
+
+    .card .meta {
+        gap: 12px
+    }
+
+    /* contact info rows can wrap on tiny screens */
+    .cinfo .row .v {
+        word-break: break-word
+    }
+
+    .foot-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px
+    }
+
+    /* compact phones: shrink the bottle trio further so the two outer
+       bottles stay fully visible alongside the centre piece */
+    .brandy-stage {
+        min-height: 300px;
+        gap: 8px
+    }
+
+    .brandy-stage .b1 {
+        height: 220px !important
+    }
+
+    .brandy-stage .b2, .brandy-stage .b3 {
+        height: 170px !important
+    }
+}
+
+/* ---- very small (≤320px / down to 280px): final guards ---- */
+@media (max-width: 340px) {
+    .filters button {
+        padding: 10px 16px;
+        font-size: .72rem
+    }
+
+    .lang button {
+        padding: 5px 8px;
+        font-size: .62rem
+    }
+
+    .brand .name {
+        font-size: .85rem
+    }
+
+    /* smallest screens: keep the whole bottle trio on screen */
+    .brandy-stage .b1 {
+        height: 180px !important
+    }
+
+    .brandy-stage .b2, .brandy-stage .b3 {
+        height: 140px !important
     }
 }
 
