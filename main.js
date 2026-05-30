@@ -127,6 +127,111 @@ const PRODUCTS = [{
         ru: 'Из винограда сорта Ркацители, выращенного в Кахетии. Свежее белое вино светло-соломенного цвета.'
     }
 }, {
+    id: 'special-reserve',
+    cat: 'red',
+    cap: '#7a1f2a',
+    glass: 'red',
+    alc: '12%',
+    serve: '14–16°C',
+    meta2: 'serve',
+    name: {en: 'Special Reserve', ru: 'Спешл Резерв'},
+    style: {en: 'Red · Semisweet', ru: 'Красное · Полусладкое'},
+    pair: {en: 'Fruit & desserts', ru: 'Фрукты и десерты'},
+    desc: {
+        en: 'A premium semisweet red of selected Saperavi — soft, rounded and generous, dressed in the house Special Reserve label.',
+        ru: 'Премиальное красное полусладкое из отборного Саперави — мягкое, округлое и щедрое, в фирменной этикетке Special Reserve.'
+    }
+}, {
+    id: 'saperavi-reserve',
+    cat: 'red',
+    cap: '#3a1d33',
+    glass: 'red',
+    alc: '13%',
+    serve: '16–18°C',
+    meta2: 'serve',
+    name: {en: 'Saperavi · Réserve', ru: 'Саперави · Резерв'},
+    style: {en: 'Red · Dry', ru: 'Красное · Сухое'},
+    pair: {en: 'Meat dishes', ru: 'Блюда из мяса'},
+    desc: {
+        en: 'A dry Saperavi reserve from Kakheti — deep ruby, with vivid black-fruit aromas of cherry and blackberry and a firm, lasting finish.',
+        ru: 'Сухой резерв Саперави из Кахетии — глубокий рубиновый цвет, яркие ароматы вишни и ежевики и долгое послевкусие.'
+    }
+}, {
+    id: 'alazani-reserve',
+    cat: 'white',
+    cap: '#8a9a4a',
+    glass: 'white',
+    alc: '11.5%',
+    serve: '10–12°C',
+    meta2: 'serve',
+    name: {en: 'Alazani Valley · Réserve', ru: 'Алазанская долина · Резерв'},
+    style: {en: 'White · Semisweet', ru: 'Белое · Полусладкое'},
+    pair: {en: 'Desserts & light cakes', ru: 'Десерты и лёгкая выпечка'},
+    desc: {
+        en: 'A reserve white of Rkatsiteli and Mtsvane from the Alazani Valley — bright amber-straw, velvety and gently sweet.',
+        ru: 'Резервное белое из Ркацители и Мцване Алазанской долины — янтарно-соломенный цвет, бархатный и мягко-сладкий вкус.'
+    }
+}, {
+    id: 'alazani-estate-white',
+    cat: 'white',
+    cap: '#1f5a2f',
+    glass: 'white',
+    alc: '11.5%',
+    serve: '10–12°C',
+    meta2: 'serve',
+    name: {en: 'Alazani Valley · Estate', ru: 'Алазанская долина · Эстейт'},
+    style: {en: 'White · Semisweet', ru: 'Белое · Полусладкое'},
+    pair: {en: 'Cheese, vegetables, seafood', ru: 'Сыры, овощи, морепродукты'},
+    desc: {
+        en: 'The estate-label white — Georgian white varieties bottled in Kakheti, straw-gold with a soft, fragrant sweetness.',
+        ru: 'Белое в фирменной этикетке Эстейт — грузинские белые сорта, разлито в Кахетии, золотисто-соломенный цвет и мягкая сладость.'
+    }
+}, {
+    id: 'rkatsiteli-estate',
+    cat: 'white',
+    cap: '#1f5a2f',
+    glass: 'white',
+    alc: '13%',
+    serve: '10–12°C',
+    meta2: 'serve',
+    name: {en: 'Rkatsiteli · Estate', ru: 'Ркацители · Эстейт'},
+    style: {en: 'White · Dry', ru: 'Белое · Сухое'},
+    pair: {en: 'Fish & seafood', ru: 'Рыба и морепродукты'},
+    desc: {
+        en: 'A dry estate Rkatsiteli grown in Kakheti — light straw colour, crisp and clean with a fresh, mineral character.',
+        ru: 'Сухое Ркацители Эстейт из Кахетии — светло-соломенный цвет, свежий и чистый вкус с минеральным характером.'
+    }
+}, {
+    id: 'alazani-estate-red',
+    cat: 'red',
+    cap: '#7a1f1f',
+    glass: 'red',
+    alc: '11.5%',
+    serve: '12–14°C',
+    meta2: 'serve',
+    name: {en: 'Alazani Valley · Estate Red', ru: 'Алазанская долина · Эстейт Красное'},
+    style: {en: 'Red · Semisweet', ru: 'Красное · Полусладкое'},
+    pair: {en: 'Cheese & light meats', ru: 'Сыры и лёгкое мясо'},
+    desc: {
+        en: 'The estate-label red — Saperavi from the Alazani Valley, dark and velvety with a rounded semisweet character.',
+        ru: 'Красное в фирменной этикетке Эстейт — Саперави Алазанской долины, тёмное и бархатное, округлое полусладкое.'
+    }
+}, {
+    id: 'saperavi-estate',
+    cat: 'red',
+    cap: '#5a1416',
+    glass: 'red',
+    alc: '13%',
+    serve: '16–18°C',
+    meta2: 'serve',
+    name: {en: 'Saperavi · Estate', ru: 'Саперави · Эстейт'},
+    style: {en: 'Red · Dry', ru: 'Красное · Сухое'},
+    pair: {en: 'Meat dishes', ru: 'Блюда из мяса'},
+    desc: {
+        en: 'A dry estate Saperavi bottled in Georgia — deep, dark ruby with ripe black fruit and a long, structured finish.',
+        ru: 'Сухое Саперави Эстейт, разлито в Грузии — глубокий тёмно-рубиновый цвет, спелые тёмные ягоды и долгое послевкусие.'
+    }
+}, {
     id: 'kakhetian-legends',
     cat: 'brandy',
     cap: '#2a1d12',
@@ -464,7 +569,14 @@ const BOTTLE_IMG = {
     'tellessy':          {src: 'images/2022_p26_x258_482x1033.webp', w: 426, h: 900},
     'didgori':           {src: 'images/2022_p31_x307_667x1171.webp', w: 520, h: 900},
     'suli':              {src: 'images/2022_p27_x269_488x1780.webp', w: 189, h: 900},
-    'venus':             {src: 'images/2022_p34_x340_790x1406.webp', w: 512, h: 900}
+    'venus':             {src: 'images/2022_p34_x340_790x1406.webp', w: 512, h: 900},
+    'special-reserve':      {src: 'images/special-reserve.webp',      w: 248, h: 538},
+    'saperavi-reserve':     {src: 'images/saperavi-reserve.webp',     w: 191, h: 548},
+    'alazani-reserve':      {src: 'images/alazani-reserve.webp',      w: 200, h: 540},
+    'alazani-estate-white': {src: 'images/alazani-estate-white.webp', w: 153, h: 605},
+    'rkatsiteli-estate':    {src: 'images/rkatsiteli-estate.webp',    w: 151, h: 602},
+    'alazani-estate-red':   {src: 'images/alazani-estate-red.webp',   w: 142, h: 603},
+    'saperavi-estate':      {src: 'images/saperavi-estate.webp',      w: 153, h: 605}
 };
 
 function escapeAttr(s) {
