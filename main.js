@@ -392,9 +392,8 @@ const T = {
         'co.title': 'Let us share <em>Georgia</em>',
         'co.lead': 'We welcome distributors, restaurateurs and partners interested in the wines and brandies of GD Company.',
         'co.k1': 'Address',
-        'co.v1': 'Kakheti, Georgia',
+        'co.v1': 'Georgia, 1510, Gurjaani municipality, Kachreti village, 3rd street, building 82',
         'co.k2': 'Email',
-        'co.k3': 'Phone',
         'co.k4': 'Online',
         'co.f.name': 'Name',
         'co.f.company': 'Company',
@@ -479,9 +478,8 @@ const T = {
         'co.title': 'Поделимся <em>Грузией</em>',
         'co.lead': 'Мы рады дистрибьюторам, рестораторам и партнёрам, заинтересованным в винах и коньяках GD Company.',
         'co.k1': 'Адрес',
-        'co.v1': 'Кахетия, Грузия',
+        'co.v1': 'Грузия, 1510, Гурджаанский муниципалитет, село Качрети, 3-я улица, здание 82',
         'co.k2': 'Эл. почта',
-        'co.k3': 'Телефон',
         'co.k4': 'Сайт',
         'co.f.name': 'Имя',
         'co.f.company': 'Компания',
@@ -779,11 +777,6 @@ function init() {
     setHTML('stIc4', IC.vine);
     setHTML('coIc1', IC.pin);
     setHTML('coIc2', IC.mail);
-    setHTML('coIc3', IC.phone);
-    setHTML('coIc4', IC.globe);
-    setHTML('soc1', IC.fb);
-    setHTML('soc2', IC.ig);
-    setHTML('soc3', IC.globe);
     const yr = $('yr');
     if (yr) yr.textContent = String(new Date().getFullYear());
 
