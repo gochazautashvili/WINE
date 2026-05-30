@@ -423,6 +423,7 @@ const T = {
         'co.k1': 'Address',
         'co.v1': 'Georgia, 1510, Gurjaani municipality, Kachreti village, 3rd street, building 82',
         'co.k2': 'Email',
+        'co.k3': 'Phone',
         'co.k4': 'Online',
         'co.f.name': 'Name',
         'co.f.company': 'Company',
@@ -509,6 +510,7 @@ const T = {
         'co.k1': 'Адрес',
         'co.v1': 'Грузия, 1510, Гурджаанский муниципалитет, село Качрети, 3-я улица, здание 82',
         'co.k2': 'Эл. почта',
+        'co.k3': 'Телефон',
         'co.k4': 'Сайт',
         'co.f.name': 'Имя',
         'co.f.company': 'Компания',
@@ -836,6 +838,7 @@ function init() {
     setHTML('stIc4', IC.vine);
     setHTML('coIc1', IC.pin);
     setHTML('coIc2', IC.mail);
+    setHTML('coIc3', IC.phone);
     const yr = $('yr');
     if (yr) yr.textContent = String(new Date().getFullYear());
 
