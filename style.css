@@ -1793,6 +1793,19 @@ body.menu-open .mobile-menu {
     will-change: opacity, transform;
 }
 
+/* Dark scrim pooled behind the intro copy so the headline reads on bright
+   photos. Sits between the photo and the text (z-index:-1 inside the intro's
+   own stacking context) and fades away with the copy, since .cin-intro itself
+   carries the --intro-op opacity. Active on every screen size. */
+.cin-intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(66% 54% at 50% 47%, rgba(5, 2, 3, .74), rgba(5, 2, 3, .38) 54%, rgba(5, 2, 3, .12) 74%, transparent 86%);
+}
+
 .cin-intro .cin-eyebrow::after {
     content: "";
     width: 34px;
@@ -1882,6 +1895,19 @@ body.menu-open .mobile-menu {
     flex-direction: column;
     justify-content: flex-end;
     padding: clamp(40px, 7vw, 110px) clamp(20px, 7vw, 110px) clamp(70px, 11vh, 128px);
+}
+
+/* Bottom-up scrim behind the story copy. Its opacity is bound to --s2-op so it
+   fades in together with the story heading and stays invisible at the top of
+   the page (during the intro phase). Active on every screen size. */
+.cin-story::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--s2-op);
+    background: linear-gradient(to top, rgba(5, 2, 3, .86), rgba(5, 2, 3, .45) 38%, rgba(5, 2, 3, .1) 62%, transparent 76%);
 }
 
 .cin-story-in {
@@ -2081,15 +2107,6 @@ body.menu-open .mobile-menu {
         letter-spacing: .24em;
     }
 
-    /* dark scrim behind the centred copy */
-    .cin-intro::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: radial-gradient(92% 64% at 50% 45%, rgba(5, 2, 3, .82), rgba(5, 2, 3, .5) 52%, rgba(5, 2, 3, .12) 76%, transparent 88%);
-    }
-
     .cin-story {
         padding: 0 18px clamp(48px, 12vh, 72px);
     }
@@ -2107,13 +2124,13 @@ body.menu-open .mobile-menu {
         gap: 14px;
     }
 
-    /* bottom-up scrim behind the story copy */
+    /* on phones the frame is full-bleed, so widen the scrims to match */
+    .cin-intro::before {
+        background: radial-gradient(96% 66% at 50% 45%, rgba(5, 2, 3, .82), rgba(5, 2, 3, .5) 54%, rgba(5, 2, 3, .14) 78%, transparent 90%);
+    }
+
     .cin-story::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(to top, rgba(5, 2, 3, .9), rgba(5, 2, 3, .55) 40%, rgba(5, 2, 3, .12) 64%, transparent 78%);
+        background: linear-gradient(to top, rgba(5, 2, 3, .92), rgba(5, 2, 3, .55) 42%, rgba(5, 2, 3, .12) 66%, transparent 80%);
     }
 }
 
