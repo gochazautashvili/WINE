@@ -538,20 +538,6 @@ let LANG = 'en';
 /* ============================================================
    SVG FACTORIES
 ============================================================ */
-function logoSVG() {
-    return `<svg viewBox="0 0 64 76" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M32 8 C20 8 14 16 14 30 C14 46 24 56 32 60 C40 56 50 46 50 30 C50 16 44 8 32 8Z"/>
-    <path d="M26 6 Q24 2 20 4 M38 6 Q40 2 44 4"/>
-    <path d="M19 24 q-5 -3 -8 1 M45 24 q5 -3 8 1"/>
-    <g stroke-width="1.1">
-      <circle cx="16" cy="50" r="2"/><circle cx="20" cy="53" r="2"/><circle cx="18" cy="56" r="2"/>
-      <circle cx="48" cy="50" r="2"/><circle cx="44" cy="53" r="2"/><circle cx="46" cy="56" r="2"/>
-    </g>
-    <text x="32" y="40" text-anchor="middle" font-family="Fraunces,serif" font-size="20" fill="currentColor" stroke="none" font-weight="500" letter-spacing="-1">GD</text>
-    <text x="32" y="71" text-anchor="middle" font-family="Manrope,sans-serif" font-size="6" fill="currentColor" stroke="none" letter-spacing="3" font-weight="700">COMPANY</text>
-  </svg>`;
-}
-
 /* engraved vineyard landscape (reusable) */
 function landscapeSVG() {
     let rows = '';
@@ -829,9 +815,7 @@ function setHTML(id, html) {
 }
 
 function init() {
-    // brand marks (hero/about/heritage scenes are real photos in the markup)
-    setHTML('logoMark', logoSVG());
-    setHTML('logoMarkFoot', logoSVG());
+    // brand marks render from images/logo.svg via CSS mask (see .brand .mark)
     setHTML('stIc1', IC.wine);
     setHTML('stIc2', IC.brandy);
     setHTML('stIc3', IC.pin);

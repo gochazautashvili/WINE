@@ -171,9 +171,12 @@ section {
 }
 
 .brand .mark {
-    width: 34px;
-    height: 40px;
+    width: 50px;
+    height: 48px;
     color: var(--graphite);
+    background: currentColor;
+    -webkit-mask: url(images/logo.svg) center / contain no-repeat;
+    mask: url(images/logo.svg) center / contain no-repeat;
     transition: color .4s
 }
 
@@ -1342,6 +1345,8 @@ body.menu-open .mobile-menu {
 }
 
 .footer .brand .mark {
+    width: 78px;
+    height: 72px;
     color: var(--copper-2)
 }
 
@@ -1556,8 +1561,8 @@ body.menu-open .mobile-menu {
     }
 
     .brand .mark {
-        width: 28px;
-        height: 34px
+        width: 42px;
+        height: 40px
     }
 
     .lang button {
