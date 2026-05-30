@@ -629,28 +629,14 @@ function setLang(l) {
 }
 
 /* ============================================================
-   REVEAL ON SCROLL  (single shared observer, reused per render)
+   REVEAL HOOK
+   The motion layer (animations.js, GSAP) owns scroll reveals when
+   the document has the `.anim` flag. Here we just notify it that
+   (re)rendered content is ready. Without `.anim` (reduced motion or
+   no JS-motion), CSS keeps everything visible — nothing to do.
 ============================================================ */
-let revealObserver = null;
-
 function observeReveals() {
-    const nodes = document.querySelectorAll('.reveal:not(.in)');
-    // Graceful fallback when IntersectionObserver is unavailable.
-    if (!('IntersectionObserver' in window)) {
-        nodes.forEach(el => el.classList.add('in'));
-        return;
-    }
-    if (!revealObserver) {
-        revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    revealObserver.unobserve(e.target);
-                }
-            });
-        }, {threshold: .12, rootMargin: '0px 0px -8% 0px'});
-    }
-    nodes.forEach(el => revealObserver.observe(el));
+    document.dispatchEvent(new CustomEvent('content:rendered'));
 }
 
 /* ============================================================

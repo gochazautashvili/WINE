@@ -125,31 +125,17 @@ section {
 }
 
 /* reveal */
-.reveal {
+/* Reveal targets are hidden only when the motion layer is active (.anim).
+   Without it (reduced motion / no JS), content stays fully visible.
+   GSAP drives the actual reveal, so no CSS transition here (avoids conflict). */
+.anim .reveal:not(.in) {
     opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 1s var(--ease), transform 1s var(--ease)
+    transform: translateY(26px)
 }
 
 .reveal.in {
     opacity: 1;
     transform: none
-}
-
-.reveal.d1 {
-    transition-delay: .08s
-}
-
-.reveal.d2 {
-    transition-delay: .16s
-}
-
-.reveal.d3 {
-    transition-delay: .24s
-}
-
-.reveal.d4 {
-    transition-delay: .32s
 }
 
 /* ===================== NAV ===================== */
