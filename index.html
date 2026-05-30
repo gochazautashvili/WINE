@@ -42,6 +42,172 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+    /* =========================================================================
+       CINEMATIC OPENING — scroll-driven scene transition (pure CSS/JS).
+       One normalized progress value (0 → 1) is written by cinematic.js init
+       (inline, below) into CSS custom properties on .cin-scene. Only transform,
+       border-radius and opacity animate → GPU-composited, no layout thrash.
+       Namespaced `cin-` so nothing collides with the editorial site styles.
+       ========================================================================= */
+    .cin-stage{ position:relative; height:320vh; background:#140609; z-index:2; }
+    .cin-sticky{ position:sticky; top:0; height:100svh; overflow:hidden; }
+
+    .cin-scene{
+        position:absolute; inset:0;
+        --fscale:.62; --fradius:26px; --iscale:1.04;
+        --intro-op:1; --intro-y:0px; --cue-op:1;
+        --grade:.18; --scrim:0;
+        --s1-op:0; --s1-y:24px; --s2-op:0; --s2-y:48px;
+        --s3-op:0; --s3-y:38px; --s4-op:0; --s4-y:30px;
+        --rail:0;
+    }
+
+    /* the image, framed → fullscreen */
+    .cin-media{
+        position:absolute; inset:0; transform-origin:50% 50%;
+        transform:translate3d(0,0,0) scale(var(--fscale));
+        border-radius:var(--fradius); overflow:hidden;
+        will-change:transform, border-radius;
+        box-shadow:0 60px 120px -30px rgba(0,0,0,.85),
+                   0 0 0 1px rgba(203,171,110,.10) inset;
+        /* atmospheric wine-dusk fallback — looks intentional even if the photo
+           never loads (the <img> self-removes on error) */
+        background:
+            radial-gradient(120% 90% at 78% 16%, rgba(178,120,69,.45), transparent 55%),
+            radial-gradient(90% 80% at 16% 90%, rgba(94,26,40,.85), transparent 60%),
+            radial-gradient(140% 120% at 50% 120%, #1f0a10, #120508 72%),
+            linear-gradient(160deg, #2c1014, #120508);
+    }
+    .cin-img{
+        position:absolute; inset:-2%; width:104%; height:104%;
+        object-fit:cover; object-position:center 42%;
+        transform:translate3d(0,0,0) scale(var(--iscale));
+        will-change:transform; opacity:0; transition:opacity 1.1s ease;
+        filter:saturate(1.05) contrast(1.04);
+    }
+    .cin-img.is-loaded{ opacity:1; }
+    .cin-grade{
+        position:absolute; inset:0; pointer-events:none;
+        background:
+            radial-gradient(120% 100% at 50% 36%, transparent 38%, rgba(8,3,5, calc(var(--grade) + .34)) 100%),
+            linear-gradient(to top, rgba(7,3,4,var(--scrim)) 2%, transparent 44%);
+    }
+
+    /* shared label */
+    .cin-eyebrow{
+        font-family:"Manrope",sans-serif; font-weight:600; font-size:.72rem;
+        letter-spacing:.32em; text-transform:uppercase; color:var(--sand);
+        display:inline-flex; align-items:center; gap:.85em;
+    }
+    .cin-eyebrow::before{ content:""; width:34px; height:1px; background:var(--copper-2); }
+
+    /* INTRO copy (present at p=0, lifts away as we push in) */
+    .cin-intro{
+        position:absolute; inset:0; z-index:3;
+        display:flex; flex-direction:column; align-items:center; justify-content:center;
+        text-align:center; padding:0 24px;
+        opacity:var(--intro-op); transform:translate3d(0,var(--intro-y),0);
+        will-change:opacity, transform;
+    }
+    .cin-intro .cin-eyebrow::after{ content:""; width:34px; height:1px; background:var(--copper-2); }
+    .cin-title{
+        font-family:"Fraunces",Georgia,serif; font-weight:300;
+        font-size:clamp(3rem,10.5vw,7.6rem); line-height:.92; letter-spacing:-.03em;
+        color:var(--ivory); margin:.32em 0 .14em; text-shadow:0 2px 36px rgba(0,0,0,.35);
+    }
+    .cin-title em{ font-style:italic; color:var(--copper-2); font-weight:400; }
+    .cin-sub{
+        max-width:34ch; color:rgba(246,241,232,.84); font-weight:300;
+        font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.7;
+        text-shadow:0 1px 20px rgba(0,0,0,.3);
+    }
+
+    /* scroll cue */
+    .cin-cue{
+        position:absolute; left:50%; bottom:clamp(22px,4vh,40px);
+        transform:translateX(-50%); z-index:4;
+        display:flex; flex-direction:column; align-items:center; gap:12px;
+        opacity:var(--cue-op);
+        font-size:.62rem; letter-spacing:.34em; text-transform:uppercase;
+        color:rgba(246,241,232,.7);
+    }
+    .cin-cue-track{ width:1px; height:52px; background:rgba(246,241,232,.2); overflow:hidden; position:relative; }
+    .cin-cue-track::after{
+        content:""; position:absolute; inset:0; background:var(--copper-2);
+        transform:translateY(-100%); animation:cin-drip 2.4s var(--ease,cubic-bezier(.7,0,.3,1)) infinite;
+    }
+    @keyframes cin-drip{ 0%{transform:translateY(-100%)} 55%{transform:translateY(0)} 100%{transform:translateY(100%)} }
+
+    /* STORY copy (staggered reveal once the image fills the frame) */
+    .cin-story{
+        position:absolute; inset:0; z-index:3;
+        display:flex; flex-direction:column; justify-content:flex-end;
+        padding:clamp(40px,7vw,110px) clamp(20px,7vw,110px) clamp(70px,11vh,128px);
+    }
+    .cin-story-in{ max-width:780px; }
+    .cin-h{
+        font-family:"Fraunces",Georgia,serif; font-weight:300;
+        font-size:clamp(2.4rem,7vw,6rem); line-height:.98; letter-spacing:-.02em;
+        color:var(--ivory); margin:.24em 0 .34em; text-shadow:0 2px 30px rgba(0,0,0,.4);
+    }
+    .cin-h em{ font-style:italic; color:var(--copper-2); font-weight:400; }
+    .cin-p{
+        max-width:50ch; font-weight:300; font-size:clamp(1rem,1.5vw,1.18rem);
+        line-height:1.7; color:rgba(246,241,232,.85); text-shadow:0 1px 18px rgba(0,0,0,.35);
+    }
+    .cin-cta{ margin-top:clamp(26px,3vw,42px); display:flex; flex-wrap:wrap; gap:22px; align-items:center; }
+    /* buttons sit on the photo → light treatment, mirroring the site's hero */
+    .cin-story .btn{ background:var(--ivory); color:var(--graphite); }
+    .cin-story .btn:hover{ background:var(--burgundy); color:var(--ivory); }
+    .cin-story .btn.ghost{ background:transparent; color:var(--ivory); border:1px solid rgba(246,241,232,.5); }
+    .cin-story .btn.ghost:hover{ background:var(--ivory); color:var(--graphite); border-color:var(--ivory); }
+
+    /* per-element stagger windows */
+    .cin-s1{ opacity:var(--s1-op); transform:translate3d(0,var(--s1-y),0); will-change:opacity,transform; }
+    .cin-s2{ opacity:var(--s2-op); transform:translate3d(0,var(--s2-y),0); will-change:opacity,transform; }
+    .cin-s3{ opacity:var(--s3-op); transform:translate3d(0,var(--s3-y),0); will-change:opacity,transform; }
+    .cin-s4{ opacity:var(--s4-op); transform:translate3d(0,var(--s4-y),0); will-change:opacity,transform; }
+
+    /* scene progress rail */
+    .cin-rail{
+        position:absolute; right:clamp(18px,4vw,44px); top:50%; transform:translateY(-50%);
+        z-index:5; width:1px; height:124px; background:rgba(246,241,232,.16); overflow:hidden; border-radius:2px;
+    }
+    .cin-rail::after{
+        content:""; position:absolute; inset:0 0 auto 0;
+        height:calc(var(--rail) * 100%); background:linear-gradient(var(--copper-2),var(--burgundy));
+    }
+    @media (max-width:680px){ .cin-rail{ display:none; } }
+
+    /* keep the nav's existing dark-hero (light) treatment active across the
+       whole cinematic stage, overriding the early `.scrolled` ivory flip */
+    .nav.cin-over{ background:transparent !important; box-shadow:none !important; padding:22px 0 !important; }
+    .nav.cin-over .brand .mark{ color:var(--ivory); }
+    .nav.cin-over .brand .name{ color:var(--ivory); }
+    .nav.cin-over .brand .name small{ color:var(--copper-2); }
+    .nav.cin-over .nav-links a{ color:rgba(246,241,232,.82); }
+    .nav.cin-over .nav-links a:hover{ color:var(--ivory); }
+    .nav.cin-over .lang{ border-color:rgba(246,241,232,.4); background:rgba(246,241,232,.12); }
+    .nav.cin-over .lang button{ color:rgba(246,241,232,.8); }
+    .nav.cin-over .lang button.active{ background:var(--ivory); color:var(--graphite); }
+    .nav.cin-over .burger{ border-color:rgba(246,241,232,.45); }
+    .nav.cin-over .burger span{ background:var(--ivory); }
+
+    /* seamless hand-off: the editorial site rises over the final frame */
+    #about{
+        position:relative; z-index:3;
+        border-radius:34px 34px 0 0; margin-top:-34px;
+        box-shadow:0 -50px 90px -50px rgba(20,12,8,.55);
+    }
+
+    /* reduced motion: present the destination, skip the journey */
+    @media (prefers-reduced-motion: reduce){
+        .cin-stage{ height:100svh; }
+        .cin-cue-track::after{ animation:none; }
+    }
+    </style>
 </head>
 <body>
 
@@ -81,22 +247,48 @@
     </div>
 </div>
 
-<!-- ================= HERO ================= -->
-<header class="hero" id="top">
-    <img class="hero-bg" src="images/scene-hero.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async"
-         width="1800" height="1192"/>
-    <div class="wrap hero-inner reveal in">
-        <span class="eyebrow" data-i18n="hero.eyebrow">Wine · Winery · Distillery</span>
-        <h1 data-i18n-html="hero.title">Georgian wine,<br><em>bottled heritage</em></h1>
-        <p class="sub" data-i18n="hero.sub">For Georgians the vine is the source of life — and the life of the vine
-            begins in Georgia. GD Company carries that inheritance into every bottle.</p>
-        <div class="meta-row">
-            <a href="#collection" class="btn"><span data-i18n="hero.cta">Explore the collection</span><span class="arr">→</span></a>
-            <a href="#about" class="btn ghost" data-i18n="hero.cta2">Our story</a>
+<!-- ================= HERO · CINEMATIC SCROLL SCENE ================= -->
+<section class="cin-stage" id="top" aria-label="Arrival">
+    <div class="cin-sticky">
+        <div class="cin-scene" id="cinScene">
+
+            <div class="cin-media">
+                <img class="cin-img" id="cinImg" src="images/scene-hero.webp" alt="" aria-hidden="true"
+                     fetchpriority="high" decoding="async" width="1800" height="1192"/>
+                <div class="cin-grade"></div>
+            </div>
+
+            <!-- intro copy — lifts away as the image draws you in -->
+            <div class="cin-intro" id="cinIntro">
+                <span class="cin-eyebrow" data-i18n="hero.eyebrow">Wine · Winery · Distillery</span>
+                <h1 class="cin-title" data-i18n-html="hero.title">Georgian wine,<br><em>bottled heritage</em></h1>
+                <p class="cin-sub" data-i18n="hero.sub">For Georgians the vine is the source of life — and the life of
+                    the vine begins in Georgia. GD Company carries that inheritance into every bottle.</p>
+            </div>
+
+            <div class="cin-cue" id="cinCue">
+                <span data-i18n="hero.scroll">Scroll</span>
+                <span class="cin-cue-track"></span>
+            </div>
+
+            <!-- story copy — revealed once the image fills the frame -->
+            <div class="cin-story">
+                <div class="cin-story-in">
+                    <span class="cin-eyebrow cin-s1" data-i18n="cin.chapter">Chapter I — Kakheti</span>
+                    <h2 class="cin-h cin-s2" data-i18n-html="cin.story">Step inside the<br><em>valley of wine</em>.</h2>
+                    <p class="cin-p cin-s3" data-i18n="cin.storyp">Eight thousand years of winemaking, held in a single
+                        valley — sheltered by the Caucasus, ripened by a long and gentle sun.</p>
+                    <div class="cin-cta cin-s4">
+                        <a href="#collection" class="btn"><span data-i18n="hero.cta">Explore the collection</span><span class="arr">→</span></a>
+                        <a href="#about" class="btn ghost" data-i18n="hero.cta2">Our story</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cin-rail" aria-hidden="true"></div>
         </div>
     </div>
-    <div class="scroll-cue"><span class="dot"></span><span data-i18n="hero.scroll">Scroll</span></div>
-</header>
+</section>
 
 <!-- ================= ABOUT ================= -->
 <section class="about section-pad" id="about">
@@ -365,5 +557,115 @@
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="main.js"></script>
 <script src="animations.js"></script>
+
+<script>
+/* ============================================================
+   CINEMATIC OPENING ENGINE
+   Maps scroll position within .cin-stage to a normalized progress
+   value (0 → 1), eased frame-to-frame, and writes the resulting
+   visual state into CSS custom properties on .cin-scene. Runs on its
+   own rAF loop — independent of GSAP, no scroll-jacking.
+============================================================ */
+(() => {
+    "use strict";
+
+    const stage = document.getElementById("top");
+    const scene = document.getElementById("cinScene");
+    const nav   = document.getElementById("nav");
+    const img   = document.getElementById("cinImg");
+    if (!stage || !scene) return;
+
+    /* timeline helpers */
+    const clamp = (v, a = 0, b = 1) => (v < a ? a : v > b ? b : v);
+    const lerp  = (a, b, t) => a + (b - a) * t;
+    const track = (p, from, to, ease = (x) => x) => ease(clamp((p - from) / (to - from)));
+    const easeInOutCubic = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const easeOutCubic   = (x) => 1 - Math.pow(1 - x, 3);
+    const set = (k, v) => scene.style.setProperty(k, v);
+
+    /* fade the photo in when decoded; fall back to the gradient on error */
+    if (img) {
+        const show = () => img.classList.add("is-loaded");
+        if (img.complete && img.naturalWidth) show();
+        img.addEventListener("load", show);
+        img.addEventListener("error", () => img.remove());
+    }
+
+    /* single source of truth: progress → CSS custom properties */
+    function render(p) {
+        const open = track(p, 0.0, 0.46, easeInOutCubic);     // frame opens to fullscreen
+        set("--fscale",  lerp(0.62, 1.0, open).toFixed(4));
+        set("--fradius", lerp(26, 0, open).toFixed(2) + "px");
+        set("--iscale",  lerp(1.04, 1.24, easeOutCubic(p)).toFixed(4)); // continuous push-in
+
+        const introOut = track(p, 0.0, 0.20, easeOutCubic);   // intro lifts away early
+        set("--intro-op", (1 - introOut).toFixed(3));
+        set("--intro-y",  (introOut * -40).toFixed(1) + "px");
+        set("--cue-op",   (1 - track(p, 0.0, 0.10)).toFixed(3));
+
+        set("--grade", lerp(0.18, 0.42, track(p, 0.30, 0.85)).toFixed(3)); // legibility grade
+        set("--scrim", lerp(0.0, 0.82, track(p, 0.40, 0.78)).toFixed(3));
+
+        const s1 = track(p, 0.46, 0.60, easeOutCubic);        // staggered story reveal
+        set("--s1-op", s1.toFixed(3)); set("--s1-y", lerp(24, 0, s1).toFixed(1) + "px");
+        const s2 = track(p, 0.50, 0.70, easeOutCubic);
+        set("--s2-op", s2.toFixed(3)); set("--s2-y", lerp(48, 0, s2).toFixed(1) + "px");
+        const s3 = track(p, 0.58, 0.78, easeOutCubic);
+        set("--s3-op", s3.toFixed(3)); set("--s3-y", lerp(38, 0, s3).toFixed(1) + "px");
+        const s4 = track(p, 0.66, 0.86, easeOutCubic);
+        set("--s4-op", s4.toFixed(3)); set("--s4-y", lerp(30, 0, s4).toFixed(1) + "px");
+
+        set("--rail", p.toFixed(4));
+    }
+
+    /* scroll → progress, with frame-rate-smoothed interpolation */
+    let stageTop = 0, scrollLen = 1, navSwitch = 0;
+    let targetP = 0, currentP = -1, running = false;
+
+    function measure() {
+        const rect = stage.getBoundingClientRect();
+        stageTop  = rect.top + window.scrollY;
+        scrollLen = Math.max(1, stage.offsetHeight - window.innerHeight);
+        navSwitch = stageTop + stage.offsetHeight - 34 - 96; // where #about reaches the nav
+        readTarget();
+    }
+    function readTarget() {
+        targetP = clamp((window.scrollY - stageTop) / scrollLen);
+        updateNav();
+        if (!running) { running = true; requestAnimationFrame(loop); }
+    }
+    function updateNav() {
+        // keep the nav's light (dark-hero) treatment while it sits over the scene
+        if (nav) nav.classList.toggle("cin-over", window.scrollY < navSwitch);
+    }
+    function loop() {
+        const diff = targetP - currentP;
+        if (Math.abs(diff) < 0.0004) { currentP = targetP; render(currentP); running = false; return; }
+        currentP += diff * 0.14;   // critically-damped, buttery feel
+        render(currentP);
+        requestAnimationFrame(loop);
+    }
+
+    /* boot */
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        render(1);                 // land directly on the fullscreen story
+        const rect = stage.getBoundingClientRect();
+        navSwitch = rect.top + window.scrollY + stage.offsetHeight - 130;
+        updateNav();
+        window.addEventListener("scroll", updateNav, { passive: true });
+        window.addEventListener("resize", () => {
+            const r = stage.getBoundingClientRect();
+            navSwitch = r.top + window.scrollY + stage.offsetHeight - 130;
+            updateNav();
+        });
+    } else {
+        measure();
+        render(0);
+        window.addEventListener("scroll", readTarget, { passive: true });
+        window.addEventListener("resize", measure);
+        window.addEventListener("load", measure);  // re-measure after fonts/image settle
+    }
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,488 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "GD Company" [ref=e4] [cursor=pointer]:
+        - /url: "#top"
+        - img [ref=e6]:
+          - generic [ref=e17]: GD
+          - generic [ref=e18]: COMPANY
+        - generic [ref=e19]:
+          - text: GD
+          - generic [ref=e20]: Company
+      - generic [ref=e21]:
+        - group "Language" [ref=e22]:
+          - button "EN" [ref=e23] [cursor=pointer]
+          - button "RU" [ref=e24] [cursor=pointer]
+        - button "Menu" [ref=e25] [cursor=pointer]
+  - region "Arrival" [ref=e29]:
+    - generic [ref=e31]:
+      - img [ref=e33]
+      - generic [ref=e34]:
+        - generic [ref=e35]: Wine · Winery · Distillery
+        - heading "Georgian wine, bottled heritage" [level=1] [ref=e36]:
+          - text: Georgian wine,
+          - emphasis [ref=e37]: bottled heritage
+        - paragraph [ref=e38]: For Georgians the vine is the source of life — and the life of the vine begins in Georgia. GD Company carries that inheritance into every bottle.
+      - generic [ref=e40]: Scroll
+      - generic [ref=e43]:
+        - generic [ref=e44]: Chapter I — Kakheti
+        - heading "Step inside the valley of wine." [level=2] [ref=e45]:
+          - text: Step inside the
+          - emphasis [ref=e46]: valley of wine
+          - text: .
+        - paragraph [ref=e47]: Eight thousand years of winemaking, held in a single valley — sheltered by the Caucasus, ripened by a long and gentle sun.
+        - generic [ref=e48]:
+          - link "Explore the collection →" [ref=e49] [cursor=pointer]:
+            - /url: "#collection"
+            - generic [ref=e50]: Explore the collection
+            - generic [ref=e51]: →
+          - link "Our story" [ref=e52] [cursor=pointer]:
+            - /url: "#about"
+  - generic [ref=e55]:
+    - generic [ref=e56]:
+      - generic [ref=e57]: About the house
+      - heading "Old traditions, modern hands" [level=2] [ref=e58]:
+        - text: Old traditions,
+        - emphasis [ref=e59]: modern hands
+      - paragraph [ref=e60]: Georgia is a country that boasts an extraordinary history and culture — one that is inseparable from wine. GD Company preserves the ancient, unmistakable taste of Georgian wine while shaping its own incomparable style.
+      - paragraph [ref=e61]: By uniting modern technology with the oldest traditions of winemaking, the house brings together a premium line of wine and a classic line of brandy. Each release carries its own history, origin, character and appearance.
+      - blockquote [ref=e62]: “For Georgians the vine is the source of life, while the life of the vine starts from Georgia.”
+    - generic [ref=e63]:
+      - img "Vineyard and winery in Kakheti, Georgia" [ref=e64]
+      - generic [ref=e66]:
+        - generic [ref=e67]: Kakheti, Georgia
+        - generic [ref=e68]: The cradle of wine
+  - generic [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]: The collection
+      - heading "Wines & brandy of Kakheti" [level=2] [ref=e73]:
+        - text: Wines & brandy of
+        - emphasis [ref=e74]: Kakheti
+      - paragraph [ref=e75]: A catalogue drawn from selected Georgian varietals — each with its own origin, character and table.
+    - generic [ref=e76]:
+      - button "All" [ref=e77] [cursor=pointer]
+      - button "Red Wines" [ref=e78] [cursor=pointer]
+      - button "White Wines" [ref=e79] [cursor=pointer]
+      - button "Brandy" [ref=e80] [cursor=pointer]
+    - generic [ref=e81]:
+      - article [ref=e82]:
+        - generic [ref=e83]:
+          - generic [ref=e84]: Red · Semisweet
+          - img "Kindzmarauli" [ref=e85]
+        - generic [ref=e86]:
+          - heading "Kindzmarauli" [level=3] [ref=e87]
+          - generic [ref=e88]: Red · Semisweet
+          - paragraph [ref=e89]: Bearing the name of its place of origin, made of selected Saperavi grapes grown in the Kindzmarauli micro-zone of Kakheti.
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: Alcohol
+              - generic [ref=e93]: 12%
+            - generic [ref=e94]:
+              - generic [ref=e95]: Serve
+              - generic [ref=e96]: 14–16°C
+          - generic [ref=e97]:
+            - img [ref=e98]
+            - generic [ref=e101]: Fruit & desserts
+      - article [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]: Red · Dry
+          - img "Saperavi" [ref=e105]
+        - generic [ref=e106]:
+          - heading "Saperavi" [level=3] [ref=e107]
+          - generic [ref=e108]: Red · Dry
+          - paragraph [ref=e109]: Made of Saperavi grapes from Kakheti. A dark, ruby wine with vivid aromas of red fruit and black berries — cherry and blackberry.
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e112]: Alcohol
+              - generic [ref=e113]: 13%
+            - generic [ref=e114]:
+              - generic [ref=e115]: Serve
+              - generic [ref=e116]: 16–18°C
+          - generic [ref=e117]:
+            - img [ref=e118]
+            - generic [ref=e121]: Meat dishes
+      - article [ref=e122]:
+        - generic [ref=e123]:
+          - generic [ref=e124]: Red · Semisweet
+          - img "Khvanchkara" [ref=e125]
+        - generic [ref=e126]:
+          - heading "Khvanchkara" [level=3] [ref=e127]
+          - generic [ref=e128]: Red · Semisweet
+          - paragraph [ref=e129]: A celebrated Georgian classic — a deep, rounded semisweet red with a harmonious, generous character.
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]: Alcohol
+              - generic [ref=e133]: 12%
+            - generic [ref=e134]:
+              - generic [ref=e135]: Serve
+              - generic [ref=e136]: 14–16°C
+          - generic [ref=e137]:
+            - img [ref=e138]
+            - generic [ref=e141]: Fruit & desserts
+      - article [ref=e142]:
+        - generic [ref=e143]:
+          - generic [ref=e144]: Red · Semisweet
+          - img "Alazani Valley · Red" [ref=e145]
+        - generic [ref=e146]:
+          - heading "Alazani Valley · Red" [level=3] [ref=e147]
+          - generic [ref=e148]: Red · Semisweet
+          - paragraph [ref=e149]: Made of Saperavi grapes grown in the Alazani Valley. Dark red in colour and distinguished by full, velvety aromas.
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - generic [ref=e152]: Alcohol
+              - generic [ref=e153]: 11.5%
+            - generic [ref=e154]:
+              - generic [ref=e155]: Serve
+              - generic [ref=e156]: 12–14°C
+          - generic [ref=e157]:
+            - img [ref=e158]
+            - generic [ref=e161]: Cheese, vegetables, seafood
+      - article [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]: Red · Dry
+          - img "Kvareli" [ref=e165]
+        - generic [ref=e166]:
+          - heading "Kvareli" [level=3] [ref=e167]
+          - generic [ref=e168]: Red · Dry
+          - paragraph [ref=e169]: Budeshuri Saperavi from the Kvareli micro-zone. Deep pomegranate colour with berries, plum and notes of vanilla and clove.
+          - generic [ref=e170]:
+            - generic [ref=e171]:
+              - generic [ref=e172]: Alcohol
+              - generic [ref=e173]: 12.5%
+            - generic [ref=e174]:
+              - generic [ref=e175]: Serve
+              - generic [ref=e176]: 12–14°C
+          - generic [ref=e177]:
+            - img [ref=e178]
+            - generic [ref=e181]: Veal, steak, meat
+      - article [ref=e182]:
+        - generic [ref=e183]:
+          - generic [ref=e184]: White · Semisweet
+          - img "Alazani Valley · White" [ref=e185]
+        - generic [ref=e186]:
+          - heading "Alazani Valley · White" [level=3] [ref=e187]
+          - generic [ref=e188]: White · Semisweet
+          - paragraph [ref=e189]: Made of Rkatsiteli, Mtsvane and other white varieties. A straw-coloured wine with a velvety taste and pleasant aromas.
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e192]: Alcohol
+              - generic [ref=e193]: 11.5%
+            - generic [ref=e194]:
+              - generic [ref=e195]: Serve
+              - generic [ref=e196]: 10–12°C
+          - generic [ref=e197]:
+            - img [ref=e198]
+            - generic [ref=e201]: Desserts & light cakes
+      - article [ref=e202]:
+        - generic [ref=e203]:
+          - generic [ref=e204]: White · Dry
+          - img "Tsinandali" [ref=e205]
+        - generic [ref=e206]:
+          - heading "Tsinandali" [level=3] [ref=e207]
+          - generic [ref=e208]: White · Dry
+          - paragraph [ref=e209]: Bearing the name of its origin — Rkatsiteli and Mtsvane from the Tsinandali micro-zone, with a golden-straw hue.
+          - generic [ref=e210]:
+            - generic [ref=e211]:
+              - generic [ref=e212]: Alcohol
+              - generic [ref=e213]: 13%
+            - generic [ref=e214]:
+              - generic [ref=e215]: Serve
+              - generic [ref=e216]: 10–12°C
+          - generic [ref=e217]:
+            - img [ref=e218]
+            - generic [ref=e221]: Poultry & seafood
+      - article [ref=e222]:
+        - generic [ref=e223]:
+          - generic [ref=e224]: White · Dry
+          - img "Rkatsiteli" [ref=e225]
+        - generic [ref=e226]:
+          - heading "Rkatsiteli" [level=3] [ref=e227]
+          - generic [ref=e228]: White · Dry
+          - paragraph [ref=e229]: Made of the Rkatsiteli variety grown in Kakheti. A crisp white wine of light straw colour.
+          - generic [ref=e230]:
+            - generic [ref=e231]:
+              - generic [ref=e232]: Alcohol
+              - generic [ref=e233]: 13%
+            - generic [ref=e234]:
+              - generic [ref=e235]: Serve
+              - generic [ref=e236]: 10–12°C
+          - generic [ref=e237]:
+            - img [ref=e238]
+            - generic [ref=e241]: Fish & seafood
+      - article [ref=e242]:
+        - generic [ref=e243]:
+          - generic [ref=e244]: Georgian Brandy · 3★ 5★ 7★
+          - img "Kakhetian Legends" [ref=e245]
+        - generic [ref=e246]:
+          - heading "Kakhetian Legends" [level=3] [ref=e247]
+          - generic [ref=e248]: Georgian Brandy · 3★ 5★ 7★
+          - paragraph [ref=e249]: A classic line of Georgian brandy aged three, five and seven years in oak — warm amber with a long, resinous finish.
+          - generic [ref=e250]:
+            - generic [ref=e251]:
+              - generic [ref=e252]: Alcohol
+              - generic [ref=e253]: 40%
+            - generic [ref=e254]:
+              - generic [ref=e255]: Range
+              - generic [ref=e256]: 3–7 yrs · oak
+          - generic [ref=e257]:
+            - img [ref=e258]
+            - generic [ref=e261]: Neat, or with dark chocolate
+      - article [ref=e262]:
+        - generic [ref=e263]:
+          - generic [ref=e264]: Georgian Brandy · Prestige
+          - img "King David" [ref=e265]
+        - generic [ref=e266]:
+          - heading "King David" [level=3] [ref=e267]
+          - generic [ref=e268]: Georgian Brandy · Prestige
+          - paragraph [ref=e269]: A regal Georgian brandy in a sculpted decanter — offered as VS, VSOP and XO, deep amber-red with refined warmth.
+          - generic [ref=e270]:
+            - generic [ref=e271]:
+              - generic [ref=e272]: Alcohol
+              - generic [ref=e273]: 40%
+            - generic [ref=e274]:
+              - generic [ref=e275]: Range
+              - generic [ref=e276]: VS · VSOP · XO
+          - generic [ref=e277]:
+            - img [ref=e278]
+            - generic [ref=e281]: Digestif, after dinner
+      - article [ref=e282]:
+        - generic [ref=e283]:
+          - generic [ref=e284]: Prestige Cognac-style
+          - img "Tellessy" [ref=e285]
+        - generic [ref=e286]:
+          - heading "Tellessy" [level=3] [ref=e287]
+          - generic [ref=e288]: Prestige Cognac-style
+          - paragraph [ref=e289]: A prestige brandy in the cognac tradition, presented as VS, VSOP and XO in a softly sculpted flask.
+          - generic [ref=e290]:
+            - generic [ref=e291]:
+              - generic [ref=e292]: Alcohol
+              - generic [ref=e293]: 40%
+            - generic [ref=e294]:
+              - generic [ref=e295]: Range
+              - generic [ref=e296]: VS · VSOP · XO
+          - generic [ref=e297]:
+            - img [ref=e298]
+            - generic [ref=e301]: Neat or on the rocks
+      - article [ref=e302]:
+        - generic [ref=e303]:
+          - generic [ref=e304]: Georgian Brandy
+          - img "Didgori" [ref=e305]
+        - generic [ref=e306]:
+          - heading "Didgori" [level=3] [ref=e307]
+          - generic [ref=e308]: Georgian Brandy
+          - paragraph [ref=e309]: Named for a Georgian victory — a flask-shaped brandy in three, five and seven-star expressions.
+          - generic [ref=e310]:
+            - generic [ref=e311]:
+              - generic [ref=e312]: Alcohol
+              - generic [ref=e313]: 40%
+            - generic [ref=e314]:
+              - generic [ref=e315]: Range
+              - generic [ref=e316]: 3★ · 5★ · 7★
+          - generic [ref=e317]:
+            - img [ref=e318]
+            - generic [ref=e321]: Neat
+      - article [ref=e322]:
+        - generic [ref=e323]:
+          - generic [ref=e324]: Georgian Brandy
+          - img "Suli" [ref=e325]
+        - generic [ref=e326]:
+          - heading "Suli" [level=3] [ref=e327]
+          - generic [ref=e328]: Georgian Brandy
+          - paragraph [ref=e329]: A modern Georgian brandy with a flowing wave label, offered as VS and VSOP.
+          - generic [ref=e330]:
+            - generic [ref=e331]:
+              - generic [ref=e332]: Alcohol
+              - generic [ref=e333]: 40%
+            - generic [ref=e334]:
+              - generic [ref=e335]: Range
+              - generic [ref=e336]: VS · VSOP
+          - generic [ref=e337]:
+            - img [ref=e338]
+            - generic [ref=e341]: Neat
+      - article [ref=e342]:
+        - generic [ref=e343]:
+          - generic [ref=e344]: Blended Brandy · VSOP
+          - img "Venus" [ref=e345]
+        - generic [ref=e346]:
+          - heading "Venus" [level=3] [ref=e347]
+          - generic [ref=e348]: Blended Brandy · VSOP
+          - paragraph [ref=e349]: A blended brandy crafted with the technology of cognac — a deep ruby-amber spirit in an elegant decanter.
+          - generic [ref=e350]:
+            - generic [ref=e351]:
+              - generic [ref=e352]: Alcohol
+              - generic [ref=e353]: 40%
+            - generic [ref=e354]:
+              - generic [ref=e355]: Range
+              - generic [ref=e356]: V.S.O.P
+          - generic [ref=e357]:
+            - img [ref=e358]
+            - generic [ref=e361]: Neat or in cocktails
+  - generic [ref=e363]:
+    - generic [ref=e364]:
+      - generic [ref=e365]: The distillery
+      - heading "A classic line of Georgian brandy" [level=2] [ref=e366]:
+        - text: A classic line of
+        - emphasis [ref=e367]: Georgian brandy
+      - paragraph [ref=e368]: From the cellars of Kakheti, GD Company ages its spirits in oak to craft a classic line in the tradition of cognac — warm amber, long resinous finishes, and bottles dressed for the occasion.
+      - paragraph [ref=e369]: Two houses lead the range — Kakhetian Legends, matured three to seven years, and King David, a regal Georgian brandy offered as VS, VSOP and XO.
+      - generic [ref=e370]:
+        - generic [ref=e371]:
+          - generic [ref=e372]: Kakhetian Legends
+          - generic [ref=e373]: 3★ · 5★ · 7★
+        - generic [ref=e374]:
+          - generic [ref=e375]: King David
+          - generic [ref=e376]: VS · VSOP · XO
+        - generic [ref=e377]:
+          - generic [ref=e378]: Tellessy · Didgori · Suli · Venus
+          - generic [ref=e379]: + Prestige range
+    - generic [ref=e380]:
+      - img "Venus" [ref=e381]
+      - img "King David" [ref=e382]
+      - img "Kakhetian Legends" [ref=e383]
+  - generic [ref=e385]:
+    - generic [ref=e386]:
+      - generic [ref=e387]: Georgian heritage
+      - heading "Eight thousand years under the vine" [level=2] [ref=e388]:
+        - text: Eight thousand years
+        - emphasis [ref=e389]: under the vine
+      - paragraph [ref=e390]: The story of Georgian wine is the story of a people — written across the valleys of Kakheti, in clay vessels buried beneath the earth.
+    - generic [ref=e391]:
+      - generic [ref=e392]:
+        - img "Vineyards of the Alazani Valley beneath the Caucasus" [ref=e393]
+        - heading "The Alazani Valley" [level=3] [ref=e395]
+        - paragraph [ref=e396]: Sheltered by the Caucasus, the vineyards of Kakheti ripen under a long warm sun — the heartland of Georgian viticulture.
+      - generic [ref=e397]:
+        - img "Ripe Saperavi grape clusters on the vine" [ref=e398]
+        - heading "Born of Saperavi" [level=3] [ref=e400]
+        - paragraph [ref=e401]: The deep, teinturier Saperavi grape gives Georgia its great reds — from dry Saperavi to the celebrated semisweet Kindzmarauli.
+      - generic [ref=e402]:
+        - img "Traditional Georgian clay kvevri vessel" [ref=e403]
+        - heading "The Kvevri" [level=3] [ref=e405]
+        - paragraph [ref=e406]: Fermented and aged in clay vessels — a UNESCO-recognised method thousands of years old.
+      - generic [ref=e407]:
+        - img "Brandy ageing in oak casks" [ref=e408]
+        - heading "Oak & time" [level=3] [ref=e410]
+        - paragraph [ref=e411]: Brandies rest for years in oak casks, drawing out colour, warmth and a long harmonic trail.
+      - generic [ref=e412]:
+        - img "Vineyards above a Kakhetian village" [ref=e413]
+        - heading "For the world" [level=3] [ref=e415]
+        - paragraph [ref=e416]: Bottled in Georgia and carried abroad — heritage made for the tables of the world.
+  - generic [ref=e418]:
+    - generic [ref=e419]:
+      - generic [ref=e420]: The house in numbers
+      - heading "Winery & distillery" [level=2] [ref=e421]:
+        - text: Winery &
+        - emphasis [ref=e422]: distillery
+    - generic [ref=e423]:
+      - generic [ref=e424]:
+        - img [ref=e426]
+        - generic [ref=e429]: 0+
+        - generic [ref=e430]: Signature wines
+      - generic [ref=e431]:
+        - img [ref=e433]
+        - generic [ref=e435]: 0+
+        - generic [ref=e436]: Brandy lines
+      - generic [ref=e437]:
+        - img [ref=e439]
+        - generic [ref=e442]: "0"
+        - generic [ref=e443]: Region — Kakheti
+      - generic [ref=e444]:
+        - img [ref=e446]
+        - generic [ref=e451]: 0yrs
+        - generic [ref=e452]: Of wine tradition
+  - generic [ref=e454]:
+    - generic [ref=e455]:
+      - generic [ref=e456]: Export inquiries
+      - heading "Let us share Georgia" [level=2] [ref=e457]:
+        - text: Let us share
+        - emphasis [ref=e458]: Georgia
+    - generic [ref=e459]:
+      - generic [ref=e460]:
+        - paragraph [ref=e461]: We welcome distributors, restaurateurs and partners interested in the wines and brandies of GD Company.
+        - generic [ref=e462]:
+          - img [ref=e464]
+          - generic [ref=e467]:
+            - generic [ref=e468]: Address
+            - generic [ref=e469]: Kakheti, Georgia
+        - generic [ref=e470]:
+          - img [ref=e472]
+          - generic [ref=e475]:
+            - generic [ref=e476]: Email
+            - generic [ref=e477]: info@gdcompany.ge
+        - generic [ref=e478]:
+          - img [ref=e480]
+          - generic [ref=e482]:
+            - generic [ref=e483]: Phone
+            - generic [ref=e484]: +995 (0) 32 000 00 00
+        - generic [ref=e485]:
+          - img [ref=e487]
+          - generic [ref=e490]:
+            - generic [ref=e491]: Online
+            - generic [ref=e492]: www.gdcompany.ge
+      - generic [ref=e494]:
+        - generic [ref=e495]:
+          - generic [ref=e496]:
+            - generic [ref=e497]: Name
+            - textbox [ref=e498]
+          - generic [ref=e499]:
+            - generic [ref=e500]: Company
+            - textbox [ref=e501]
+        - generic [ref=e502]:
+          - generic [ref=e503]:
+            - generic [ref=e504]: Email
+            - textbox [ref=e505]
+          - generic [ref=e506]:
+            - generic [ref=e507]: Country
+            - textbox [ref=e508]
+        - generic [ref=e509]:
+          - generic [ref=e510]: Message
+          - textbox [ref=e511]
+        - button "Send inquiry →" [ref=e512]:
+          - generic [ref=e513]: Send inquiry
+          - generic [ref=e514]: →
+  - contentinfo [ref=e515]:
+    - generic [ref=e516]:
+      - generic [ref=e517]:
+        - generic [ref=e518]:
+          - link "GD Company" [ref=e519] [cursor=pointer]:
+            - /url: "#top"
+            - img [ref=e521]:
+              - generic [ref=e532]: GD
+              - generic [ref=e533]: COMPANY
+            - generic [ref=e534]:
+              - text: GD
+              - generic [ref=e535]: Company
+          - paragraph [ref=e536]: Production of alcoholic beverages — winery and distillery. Premium Georgian wine and brandy, rooted in the traditions of Kakheti.
+          - generic [ref=e537]:
+            - link "Facebook" [ref=e538] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e539]
+            - link "Instagram" [ref=e541] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e542]
+            - link "Website" [ref=e546] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e547]
+        - generic [ref=e550]:
+          - heading "Explore" [level=4] [ref=e551]
+          - link "About" [ref=e552] [cursor=pointer]:
+            - /url: "#about"
+          - link "Collection" [ref=e553] [cursor=pointer]:
+            - /url: "#collection"
+          - link "Brandy" [ref=e554] [cursor=pointer]:
+            - /url: "#brandy"
+          - link "Heritage" [ref=e555] [cursor=pointer]:
+            - /url: "#heritage"
+          - link "Gallery" [ref=e556] [cursor=pointer]:
+            - /url: "#gallery"
+        - generic [ref=e557]:
+          - heading "Contact" [level=4] [ref=e558]
+          - paragraph [ref=e559]: Kakheti, Georgia
+          - paragraph [ref=e560]: info@gdcompany.ge
+          - paragraph [ref=e561]: +995 (0) 32 000 00 00
+          - paragraph [ref=e562]: www.gdcompany.ge
+      - generic [ref=e563]:
+        - generic [ref=e564]: © 2026 GD Company. All rights reserved.
+        - generic [ref=e565]:
+          - generic [ref=e566]: 18+
+          - generic [ref=e567]: Please enjoy responsibly.
