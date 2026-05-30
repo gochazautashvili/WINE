@@ -165,3 +165,149 @@
         if (window.console) console.error('[animations] disabled:', err);
     }
 })();
+
+/* ============================================================
+   CINEMATIC OPENING ENGINE
+   Maps scroll position within .cin-stage to a normalized progress
+   value (0 → 1), eased frame-to-frame, and writes the resulting
+   visual state into CSS custom properties on .cin-scene. Runs on its
+   own rAF loop — independent of GSAP, no scroll-jacking.
+============================================================ */
+(() => {
+    "use strict";
+
+    const stage = document.getElementById("top");
+    const scene = document.getElementById("cinScene");
+    const nav = document.getElementById("nav");
+    const img = document.getElementById("cinImg");
+    if (!stage || !scene) return;
+
+    /* timeline helpers */
+    const clamp = (v, a = 0, b = 1) => (v < a ? a : v > b ? b : v);
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const track = (p, from, to, ease = (x) => x) => ease(clamp((p - from) / (to - from)));
+    const easeInOutCubic = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const easeOutCubic = (x) => 1 - Math.pow(1 - x, 3);
+    const set = (k, v) => scene.style.setProperty(k, v);
+
+    /* fade the photo in when decoded; fall back to the gradient on error */
+    if (img) {
+        const show = () => img.classList.add("is-loaded");
+        if (img.complete && img.naturalWidth) show();
+        img.addEventListener("load", show);
+        img.addEventListener("error", () => img.remove());
+    }
+
+    /* The framed image opens from `fromScale` (a fraction of the viewport) to
+       fullscreen. On phones a 0.62 frame is too narrow to hold the headline —
+       the text would spill outside it — so we start much closer to full-bleed.
+       Recomputed on resize via measure(). */
+    let fromScale = 0.62, fromRadius = 26;
+
+    function setFrameStart() {
+        const w = window.innerWidth;
+        if (w <= 600) {
+            fromScale = 0.94;
+            fromRadius = 16;
+        } else if (w <= 900) {
+            fromScale = 0.80;
+            fromRadius = 20;
+        } else {
+            fromScale = 0.62;
+            fromRadius = 26;
+        }
+    }
+
+    setFrameStart();
+
+    /* single source of truth: progress → CSS custom properties */
+    function render(p) {
+        const open = track(p, 0.0, 0.46, easeInOutCubic);     // frame opens to fullscreen
+        set("--fscale", lerp(fromScale, 1.0, open).toFixed(4));
+        set("--fradius", lerp(fromRadius, 0, open).toFixed(2) + "px");
+        set("--iscale", lerp(1.04, 1.24, easeOutCubic(p)).toFixed(4)); // continuous push-in
+
+        const introOut = track(p, 0.0, 0.20, easeOutCubic);   // intro lifts away early
+        set("--intro-op", (1 - introOut).toFixed(3));
+        set("--intro-y", (introOut * -40).toFixed(1) + "px");
+        set("--cue-op", (1 - track(p, 0.0, 0.10)).toFixed(3));
+
+        set("--grade", lerp(0.18, 0.42, track(p, 0.30, 0.85)).toFixed(3)); // legibility grade
+        set("--scrim", lerp(0.0, 0.82, track(p, 0.40, 0.78)).toFixed(3));
+
+        const s1 = track(p, 0.46, 0.60, easeOutCubic);        // staggered story reveal
+        set("--s1-op", s1.toFixed(3));
+        set("--s1-y", lerp(24, 0, s1).toFixed(1) + "px");
+        const s2 = track(p, 0.50, 0.70, easeOutCubic);
+        set("--s2-op", s2.toFixed(3));
+        set("--s2-y", lerp(48, 0, s2).toFixed(1) + "px");
+        const s3 = track(p, 0.58, 0.78, easeOutCubic);
+        set("--s3-op", s3.toFixed(3));
+        set("--s3-y", lerp(38, 0, s3).toFixed(1) + "px");
+        const s4 = track(p, 0.66, 0.86, easeOutCubic);
+        set("--s4-op", s4.toFixed(3));
+        set("--s4-y", lerp(30, 0, s4).toFixed(1) + "px");
+
+        set("--rail", p.toFixed(4));
+    }
+
+    /* scroll → progress, with frame-rate-smoothed interpolation */
+    let stageTop = 0, scrollLen = 1, navSwitch = 0;
+    let targetP = 0, currentP = -1, running = false;
+
+    function measure() {
+        setFrameStart();
+        const rect = stage.getBoundingClientRect();
+        stageTop = rect.top + window.scrollY;
+        scrollLen = Math.max(1, stage.offsetHeight - window.innerHeight);
+        navSwitch = stageTop + stage.offsetHeight - 34 - 96; // where #about reaches the nav
+        readTarget();
+    }
+
+    function readTarget() {
+        targetP = clamp((window.scrollY - stageTop) / scrollLen);
+        updateNav();
+        if (!running) {
+            running = true;
+            requestAnimationFrame(loop);
+        }
+    }
+
+    function updateNav() {
+        // keep the nav's light (dark-hero) treatment while it sits over the scene
+        if (nav) nav.classList.toggle("cin-over", window.scrollY < navSwitch);
+    }
+
+    function loop() {
+        const diff = targetP - currentP;
+        if (Math.abs(diff) < 0.0004) {
+            currentP = targetP;
+            render(currentP);
+            running = false;
+            return;
+        }
+        currentP += diff * 0.14;   // critically-damped, buttery feel
+        render(currentP);
+        requestAnimationFrame(loop);
+    }
+
+    /* boot */
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        render(1);                 // land directly on the fullscreen story
+        const rect = stage.getBoundingClientRect();
+        navSwitch = rect.top + window.scrollY + stage.offsetHeight - 130;
+        updateNav();
+        window.addEventListener("scroll", updateNav, {passive: true});
+        window.addEventListener("resize", () => {
+            const r = stage.getBoundingClientRect();
+            navSwitch = r.top + window.scrollY + stage.offsetHeight - 130;
+            updateNav();
+        });
+    } else {
+        measure();
+        render(0);
+        window.addEventListener("scroll", readTarget, {passive: true});
+        window.addEventListener("resize", measure);
+        window.addEventListener("load", measure);  // re-measure after fonts/image settle
+    }
+})();
